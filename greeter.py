@@ -27,10 +27,9 @@ def greet_user():
     random_element_index = random.randint(0, len(greeting_list) - 1)
     # Output to screen the selected greeting
     print(greeting_list[random_element_index])
-    # Call the get_input() function:
 
 
-def get_input():
+def get_input_and_reply():
     # The following list contains lists, which contain outputs for the user (as Strings), and an
     # accompanying String to represent which data type to expect back from the user.
     question_list = [["What's your favorite color?", "str"],
@@ -48,5 +47,24 @@ def get_input():
     elif question_list[random_element_index][1] == "float":
         user_input = float(input(question_list[random_element_index][0]))
 
-    reply_list = [str("Your favorite color is " + user_input + "? I'd tell you mine, but I can't see.")
-        ,]
+    # this if / elif structure defines the reply for the user depending on the random index that was generated (random_element_index)
+    if random_element_index == 0:
+        reply = str("Your favorite color is " + str(user_input) + "? I'd tell you mine, but I can't see.")
+    elif random_element_index == 1:
+        reply = str("You are " + str(user_input) + " years old? That's roughly " + str(user_input * 365) + " days.")
+    elif random_element_index == 2:
+        reply = str("Nom nom nom.. that " + str(user_input) + " was tasty.. when divided in half, it is " + str(user_input / 2) + ", and when cubed it is " + str(user_input ** 2))
+    elif random_element_index == 3:
+        reply = str(str(user_input) + " is your name. Mine is Greeter!")
+        
+    print(reply)
+
+
+# Greet the user, then run through the get_input_and_reply() method 4 times
+greet_user()
+for x in range(0,4):
+    get_input_and_reply()
+
+
+
+            
